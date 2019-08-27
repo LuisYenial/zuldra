@@ -1,10 +1,11 @@
+//items
 var scaleP = 152
 var scaleC = aleatorio(100, 299)
 var scaleT = scaleP * scaleC
 var cargar = false
 
-var RDM2 = aleatorio(1,4)
-var RDM = aleatorio(1,4)
+var RDM2 = aleatorio(1,2)
+var RDM = aleatorio(1,2)
 
 var PLR = 32000
 var CLR = 200
@@ -18,6 +19,8 @@ var CDR = 300
 var PPE = 3000
 var CPE = 1500
 
+
+//vars feas
 var dobledrop = false
 
 var imagenes = []
@@ -32,6 +35,7 @@ tablaxd = document.getElementById("tabla")
 boton = document.getElementById("botoncito")
 boton.addEventListener("click", dropear)
 
+//creacion de las classes de los items
 class drops
 {
     constructor(o,p,q)
@@ -82,10 +86,14 @@ dropeables.push( new drops("ChaosRune",PCR,CCR) )
 dropeables.push( new drops("DeathRune",PDR,CDR) )
 dropeables.push( new drops("PureEssence",PPE,CPE) )
 
+
+//la funcion importante
 function dropear() 
 {
     lastman()
+    //dropeo y mostreo de scales
     dropeables[0].mostrar()
+    //dropeo y mostreo de drops
     if(dobledrop)
     {
         dropeables[RDM].mostrar()
@@ -95,9 +103,12 @@ function dropear()
     dropeables[RDM].mostrar()
     dropeables[RDM2].mostrar()
     }
-    RDM2 = aleatorio(1,4)
-    RDM = aleatorio(1,4)
-    scaleC = aleatorio(100, 299)    
+    RDM2 = aleatorio(1,2)
+    RDM = aleatorio(1,2)
+    dropeables[0].cantidad = aleatorio(100, 299) 
+    console.log("Scales: " + dropeables[0].cantidad)
+    console.log(dropeables[1].cantidad)   
+    console.log(dropeables[2].cantidad)  
 }
 
 function aleatorio(min,max) 
@@ -117,4 +128,3 @@ function numberWithCommas(x)
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-console.log(numberWithCommas(100000000000))
