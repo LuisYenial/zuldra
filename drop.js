@@ -4,8 +4,8 @@ var scaleC = aleatorio(100, 299)
 var scaleT = scaleP * scaleC
 var cargar = false
 
-var RDM2 = aleatorio(1,2)
-var RDM = aleatorio(1,2)
+var RDM2 = aleatorio(1,4)
+var RDM = aleatorio(1,4)
 
 var PLR = 32000
 var CLR = 200
@@ -19,9 +19,35 @@ var CDR = 300
 var PPE = 3000
 var CPE = 1500
 
+var dobledrop = false
+
+function diable()
+{
+    dobledrop = false
+}
+
+function check()
+{
+    if(RDM2 == 1 && RDM == 1)
+    {
+        dobledrop = true
+    }
+    else if(RDM2 == 2 && RDM == 2)
+    {
+        dobledrop = true
+    }
+    else if(RDM2 == 3 && RDM == 3)
+    {
+        dobledrop = true
+    }
+    else if(RDM2 == 4 && RDM == 4)
+    {
+        dobledrop = true
+    } 
+}
 
 //vars feas
-var dobledrop = false
+
 
 var imagenes = []
 imagenes["zulrah"] = "zulrah.png"
@@ -51,6 +77,12 @@ class drops
     mostrar()
     {
         tabla.appendChild(this.imagen)
+        tabla.innerHTML += ("x"+ this.cantidad +" "+ this.precio+ " GP ")
+        tabla.innerHTML += "<hr>"
+    }
+    mostrarX2()
+    {
+        tabla.appendChild(this.imagen)
         if(RDM2 == 1 && RDM == 1)
         {
             tabla.innerHTML += ("x"+ this.cantidad * 2 +" "+ this.precio * 2+ " GP ")
@@ -71,11 +103,7 @@ class drops
             tabla.innerHTML += ("x"+ this.cantidad * 2 +" "+ this.precio * 2+ " GP ")
             dobledrop = true
         }
-        else
-        {
-        tabla.innerHTML += ("x"+ this.cantidad +" "+ this.precio+ " GP ")
-        }
-        tabla.innerHTML += "<hr>"
+        tabla.innerHTML += "<hr>" 
     }   
 }
 
@@ -90,13 +118,14 @@ dropeables.push( new drops("PureEssence",PPE,CPE) )
 //la funcion importante
 function dropear() 
 {
+    check()
     lastman()
     //dropeo y mostreo de scales
     dropeables[0].mostrar()
     //dropeo y mostreo de drops
     if(dobledrop)
     {
-        dropeables[RDM].mostrar()
+        dropeables[RDM].mostrarX2()
     }
     else 
     {   
@@ -108,7 +137,8 @@ function dropear()
     dropeables[0].cantidad = aleatorio(100, 299) 
     console.log("Scales: " + dropeables[0].cantidad)
     console.log(dropeables[1].cantidad)   
-    console.log(dropeables[2].cantidad)  
+    console.log(dropeables[2].cantidad)
+    diable()  
 }
 
 function aleatorio(min,max) 
