@@ -113,7 +113,9 @@ imagenes["Dragonstone_bolt"] = "Dragonstone_bolt.png"
 //editorStart
 tablaxd = document.getElementById("tabla")
 boton = document.getElementById("botoncito")
-boton.addEventListener("click", dropear)
+boton.addEventListener("click", Kill)
+v = document.getElementById("valor")
+
 
 //dropClass
 class drops
@@ -168,6 +170,14 @@ dropeables.push( new drops("Dragonstone_bolt",2520,12) ) //11
 
 
 //la funcion importante °O°
+function Kill()
+{
+    Kills = v.value
+    for(var i = 0; i < Kills; i++)
+    {
+        dropear()
+    }
+}
 
 function dropear() 
 {
@@ -197,10 +207,6 @@ function dropear()
 
     //scalesQuantityRestart
     dropeables[0].cantidad = aleatorio(100, 299)
-    //consoletest
-    console.log("Scales: " + dropeables[0].cantidad)
-    console.log(dropeables[1].cantidad)   
-    console.log(dropeables[2].cantidad)
     //disableDoubleDrop
     diable()  
 }
@@ -210,6 +216,7 @@ function dropear()
 //1ST ROLL
 function fstroll1()
 {
+    console.log("kc " + kc)
     var randomEishon;
     randomEishon =  aleatorio(58000,100000)
     if(randomEishon < 15) //ultra rare
@@ -335,54 +342,15 @@ function diable()
 
 function check()
 {
-    if(RDM2 == 1 && RDM1 == 1)
+    var d = 1
+    for(d = 1; d < 20; d++)
     {
-        dobledrop = true
+        if(RDM2 == d && RDM1 == d)
+        {
+            dobledrop = true
+        }
     }
-    else if(RDM2 == 2 && RDM1 == 2)
-    {
-        dobledrop = true
-    }
-    else if(RDM2 == 3 && RDM1 == 3)
-    {
-        dobledrop = true
-    }
-    else if(RDM2 == 4 && RDM1 == 4)
-    {
-        dobledrop = true
-    }
-    else if(RDM2 == 4 && RDM1 == 4)
-    {
-        dobledrop = true
-    }
-    else if(RDM2 == 5 && RDM1 == 5)
-    {
-        dobledrop = true
-    }
-    else if(RDM2 == 6 && RDM1 == 6)
-    {
-        dobledrop = true
-    }
-    else if(RDM2 == 7 && RDM1 == 7)
-    {
-        dobledrop = true
-    }
-    else if(RDM2 == 8 && RDM1 == 8)
-    {
-        dobledrop = true
-    }
-    else if(RDM2 == 9 && RDM1 == 9)
-    {
-        dobledrop = true
-    }
-    else if(RDM2 == 10 && RDM1 == 10)
-    {
-        dobledrop = true
-    }
-    else if(RDM2 == 11 && RDM1 == 11)
-    {
-        dobledrop = true
-    }
+    d = 1
     tabla.innerHTML += "<hr>" 
 } 
 
