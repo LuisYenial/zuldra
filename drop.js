@@ -109,6 +109,12 @@ imagenes["Runite_ore"] = "Runite_ore.png"
 imagenes["Coal"] = "Coal.png"
 imagenes["Snakeskin"] = "Snakeskin.png"
 imagenes["Dragonstone_bolt"] = "Dragonstone_bolt.png"
+//seeds
+imagenes["CalquatSeed"] = "CalquatSeed.png"
+imagenes["MagicSeed"] = "MagicSeed.png"
+imagenes["PalmSeed"] = "PalmSeed.png"
+imagenes["PapayaSeed"] = "PapayaSeed.png"
+
 
 //editorStart
 tablaxd = document.getElementById("tabla")
@@ -158,14 +164,20 @@ dropeables.push( new drops("LawRune",PLR,CLR) ) //1
 dropeables.push( new drops("ChaosRune",PCR,CCR) ) //2
 dropeables.push( new drops("DeathRune",PDR,CDR) ) //3
 dropeables.push( new drops("PureEssence",PPE,CPE) ) //4
-//mats 5-11
+//mats 5-8
 dropeables.push( new drops("Flax",2000,1000) ) //5
-dropeables.push( new drops("Mahogany",19050,50) ) //6
-dropeables.push( new drops("Yew_logs",6650,35) ) //7
-dropeables.push( new drops("Runite_ore",22846,2) ) //8
-dropeables.push( new drops("Coal",27000,200) ) //9
-dropeables.push( new drops("Snakeskin",560,35) ) //10
+dropeables.push( new drops("Yew_logs",6650,35) ) //6
+dropeables.push( new drops("Runite_ore",22846,2) ) //7
+dropeables.push( new drops("Snakeskin",560,35) ) //8
+//raremats 9-11
+dropeables.push( new drops("Mahogany",19050,50) ) //9
+dropeables.push( new drops("Coal",27000,200) ) //10
 dropeables.push( new drops("Dragonstone_bolt",2520,12) ) //11
+//Seeds 12 - 15
+dropeables.push( new drops("CalquatSeed",218,2) )//12
+dropeables.push( new drops("MagicSeed",153000,1) )//13
+dropeables.push( new drops("PalmSeed",1,54423) )//14
+dropeables.push( new drops("PapayaSeed",3,8709) )//15
 
 
 
@@ -216,9 +228,8 @@ function dropear()
 //1ST ROLL
 function fstroll1()
 {
-    console.log("kc " + kc)
     var randomEishon;
-    randomEishon =  aleatorio(58000,100000)
+    randomEishon =  aleatorio(21000,100000)
     if(randomEishon < 15) //ultra rare
     {
         console.log("yay rare color " + randomEishon)
@@ -226,7 +237,7 @@ function fstroll1()
     else if(randomEishon > 79525) 
     {
         min1 = 5
-        max1 = 11
+        max1 = 8
         console.log("yay sacaste mats " + randomEishon) 
     }
     else if(randomEishon > 58801) 
@@ -238,11 +249,15 @@ function fstroll1()
     }
     else if(randomEishon > 41801) 
     {
+        min1 = 9
+        max1 = 11
 
         console.log("yay sacaste raremats " + randomEishon) 
     }
     else if(randomEishon > 21326) 
     {
+        min1 = 12
+        max1 = 15
         console.log("yay sacaste seeds " + randomEishon) 
     }
     else if(randomEishon > 11326) 
@@ -279,7 +294,7 @@ function fstroll1()
 function fstroll2()
 {
     var randomEishon;
-    randomEishon =  aleatorio(58000,100000)
+    randomEishon =  aleatorio(21800,100000)
     if(randomEishon < 15) //ultra rare
     {
         console.log("yay rare color " + randomEishon)
@@ -287,7 +302,7 @@ function fstroll2()
     else if(randomEishon > 79525) 
     {
         min2 = 5
-        max2 = 11
+        max2 = 8
         console.log("yay sacaste mats " + randomEishon) 
     }
     else if(randomEishon > 58801) 
@@ -298,11 +313,15 @@ function fstroll2()
     }
     else if(randomEishon > 41801) 
     {
+        min2 = 9
+        max2 = 11
 
         console.log("yay sacaste raremats " + randomEishon) 
     }
     else if(randomEishon > 21326) 
     {
+        min2 = 12
+        max2 = 15
         console.log("yay sacaste seeds " + randomEishon) 
     }
     else if(randomEishon > 11326) 
@@ -365,6 +384,7 @@ function aleatorio(min,max)
 function FRASEINIT ()
 {
     tabla.innerHTML +=("<h1>Kill Count : " + kc + "</h1>")
+    console.log("kc " + kc)
     kc = kc+1
 }
 
